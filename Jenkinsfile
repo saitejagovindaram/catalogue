@@ -33,5 +33,12 @@ pipeline {
                 '''
             }
         }
+        stage('Build'){
+            steps {
+                sh '''
+                    zip -r catalogue.zip ./*
+                '''
+            }
+        }
     }
 }
