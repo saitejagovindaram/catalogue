@@ -26,8 +26,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         stage('install dependencies') {
             steps {
                 sh '''
