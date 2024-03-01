@@ -13,7 +13,7 @@ pipeline {
         NEXUS_URL = "54.146.232.134:8081"
         NEXUS_REPOSITORY = "catalogue"
     }
-    
+
     options {
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
@@ -65,7 +65,7 @@ pipeline {
                                 // Artifact generated such as .jar, .ear and .war files.
                                 [artifactId: 'catalogue',
                                 classifier: '',
-                                file: 'catalogue',
+                                file: 'catalogue.zip',
                                 type: 'zip'],
 
                                 // // Lets upload the pom.xml file for additional information for Transitive dependencies
