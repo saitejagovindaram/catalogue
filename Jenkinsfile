@@ -8,17 +8,16 @@ pipeline {
 
     environment {
         packageVersion = ''
-    }
-    options {
-        timeout(time: 1, unit: 'HOURS')
-        disableConcurrentBuilds()
-        ansiColor('xterm')
-    }
-    environment{
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "54.146.232.134:8081"
         NEXUS_REPOSITORY = "catalogue"
+    }
+    
+    options {
+        timeout(time: 1, unit: 'HOURS')
+        disableConcurrentBuilds()
+        ansiColor('xterm')
     }
     parameters {
         string(name: 'version', defaultValue: '', description: 'what is the version?')
@@ -83,7 +82,7 @@ pipeline {
     post {
         always{
             echo 'I will run always'
-            // deleteDir()
+            deleteDir()
         }
     }
 }
