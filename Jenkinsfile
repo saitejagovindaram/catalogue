@@ -1,9 +1,11 @@
 pipeline {
-    agent {
-        node {
-            label 'agent-1'
-        }
-    }
+    // agent {
+    //     node {
+    //         label 'agent-1'
+    //     }
+    // }
+    agent any
+    
     environment {
         packageVersion = ''
     }
