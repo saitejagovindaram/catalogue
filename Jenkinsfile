@@ -5,14 +5,14 @@ pipeline {
     //     }
     // }
     agent any
-    
+
     environment {
         packageVersion = ''
     }
     options {
         timeout(time: 1, unit: 'HOURS')
-         disableConcurrentBuilds()
-         ansiColor('xterm')
+        disableConcurrentBuilds()
+        ansiColor('xterm')
     }
     parameters {
         string(name: 'version', defaultValue: '', description: 'what is the version?')
@@ -38,7 +38,9 @@ pipeline {
         stage('Build'){
             steps {
                 sh '''
+                    ls -ltr
                     zip -q -r catalogue.zip ./*
+                    ls -ltr
                 '''
             }
         }
