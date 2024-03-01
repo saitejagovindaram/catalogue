@@ -14,6 +14,12 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
+    environment{
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "54.146.232.134:8081"
+        NEXUS_REPOSITORY = "catalogue"
+    }
     parameters {
         string(name: 'version', defaultValue: '', description: 'what is the version?')
         string(name: 'environment', defaultValue: '', description: 'what is the environment?')
@@ -42,6 +48,35 @@ pipeline {
                     zip -q -r catalogue.zip ./*
                     ls -ltr
                 '''
+            }
+        }
+
+        stage('Publish artifact'){
+            steps {
+                script {
+                    nexusArtifactUploader(
+                            nexusVersion: "${NEXUS_VERSION}",
+                            protocol: NEXUS_PROTOCOL,
+                            nexusUrl: NEXUS_URL,
+                            groupId: '',
+                            version: '',
+                            repository: NEXUS_REPOSITORY,
+                            // credentialsId: NEXUS_CREDENTIAL_ID,
+                            artifacts: [
+                                // Artifact generated such as .jar, .ear and .war files.
+                                [artifactId: 'catalogue',
+                                classifier: '',
+                                file: 'catalogue',
+                                type: 'zip'],
+
+                                // // Lets upload the pom.xml file for additional information for Transitive dependencies
+                                // [artifactId: pom.artifactId,
+                                // classifier: '',
+                                // file: "pom.xml",
+                                // type: "pom"]
+                            ]
+                        );
+                }
             }
         }
     }
