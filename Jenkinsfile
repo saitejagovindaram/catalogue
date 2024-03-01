@@ -46,8 +46,9 @@ pipeline {
         }
     }
     post {
-        // always{
-        //     deleteDir()
-        // }
+        always{
+            echo 'I will run always'
+            // deleteDir()
+        }
     }
 }
