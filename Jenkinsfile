@@ -12,6 +12,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "54.146.232.134:8081"
         NEXUS_REPOSITORY = "catalogue"
+        NEXUS_CREDENTIAL_ID = 'nexus-auth'
     }
 
     options {
@@ -60,7 +61,7 @@ pipeline {
                             groupId: '',
                             version: '',
                             repository: NEXUS_REPOSITORY,
-                            // credentialsId: NEXUS_CREDENTIAL_ID,
+                            credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
                                 [artifactId: 'catalogue',
