@@ -1,16 +1,16 @@
 pipeline {
-    // agent {
-    //     node {
-    //         label 'agent-1'
-    //     }
-    // }
-    agent any
+    agent {
+        node {
+            label 'agent-1'
+        }
+    }
+    // agent any
 
     environment {
         packageVersion = ''
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "54.146.232.134:8081"
+        NEXUS_URL = "34.229.220.6:8081"
         NEXUS_REPOSITORY = "catalogue"
         NEXUS_CREDENTIAL_ID = 'nexus-auth'
     }
