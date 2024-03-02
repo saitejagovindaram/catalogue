@@ -20,10 +20,6 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    parameters {
-        string(name: 'version', defaultValue: '', description: 'what is the version?')
-        string(name: 'environment', defaultValue: '', description: 'what is the environment?')
-    }
     stages {
         stage('Get the version') {
             steps {
@@ -81,9 +77,9 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh '''
-                    echo 'Here I have to call catalogue deploy pipeline passing environemnt and version'
-                '''
+                build job: 'roboshop-dev/catalogue-cd', parameters: [
+                    string(name: 'version', value: ${packageVersion}), 
+                    string(name: 'environment', value: 'dev')]
             }
         }
     }
