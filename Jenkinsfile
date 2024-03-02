@@ -77,9 +77,11 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                build job: 'roboshop-dev/catalogue-cd', parameters: [
-                    string(name: 'version', value: ${packageVersion}), 
-                    string(name: 'environment', value: 'dev')]
+                script{
+                    build job: 'roboshop-dev/catalogue-cd', parameters: [
+                        string(name: 'version', value: ${packageVersion}), 
+                        string(name: 'environment', value: 'dev')]
+                }
             }
         }
     }
