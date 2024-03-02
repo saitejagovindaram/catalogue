@@ -80,9 +80,11 @@ pipeline {
             }
         }
         stage('Deploy'){
-            sh '''
-                echo 'Here I have to call catalogue deploy pipeline passing environemnt and version'
-            '''
+            steps{
+                sh '''
+                    echo 'Here I have to call catalogue deploy pipeline passing environemnt and version'
+                '''
+            }
         }
     }
     post {
