@@ -71,15 +71,19 @@ pipeline {
                                 // file: "pom.xml",
                                 // type: "pom"]
                             ]
-                        );
+                    );
                 }
             }
         }
         stage('Deploy'){
             steps{
-                build(job: 'roboshop-dev/catalogue-cd', parameters: [
+                // build job: 'roboshop-dev/catalogue-cd', parameters: [
+                //     string(name: 'version', value: "${packageVersion}"), 
+                //     string(name: 'environment', value: 'dev')]
+
+                build(job: 'roboshop-dev/catalogue-cd', parameters: [  // In groovy we can call a method like above as well, both will work.
                     string(name: 'version', value: "${packageVersion}"), 
-                    string(name: 'environment', value: 'dev')])
+                    string(name: 'environment', value: 'dev')]);
             }
         }
     }
