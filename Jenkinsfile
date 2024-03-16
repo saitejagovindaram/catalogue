@@ -23,6 +23,7 @@ pipeline {
     }
     parameters{
         string(name: 'NexusURL', defaultValue: '', description: 'what is the Nexux IP address')
+        booleanParam(name: 'Deploy', defaultValue: false, description: 'Want to deploy?')
     }
     stages {
         stage('Get the version') {
@@ -90,6 +91,11 @@ pipeline {
             }
         }
         stage('Deploy'){
+             when {
+                expression { 
+                    params.deploy = true
+                }
+            }   
             steps{
                 // build job: 'roboshop-dev/catalogue-cd', parameters: [
                 //     string(name: 'version', value: "${packageVersion}"), 
