@@ -10,7 +10,8 @@ pipeline {
         packageVersion = ''
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "172.31.20.124:8081"
+        // NEXUS_URL = "172.31.20.124:8081"
+        NEXUS_URL = params.NexusURL
         NEXUS_REPOSITORY = "catalogue"
         NEXUS_CREDENTIAL_ID = 'nexus-auth'
     }
@@ -19,6 +20,9 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
         ansiColor('xterm')
+    }
+    parameters{
+        string(name: 'NexusURL', defaultValue: '', description: 'what is the Nexux IP address')
     }
     stages {
         stage('Get the version') {
