@@ -93,7 +93,7 @@ pipeline {
         stage('Deploy'){
              when {
                 expression { 
-                    params.deploy = true
+                    params.deploy == true
                 }
             }   
             steps{
