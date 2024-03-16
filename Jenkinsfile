@@ -41,6 +41,16 @@ pipeline {
                 '''
             }
         }
+        stage('Unit Test'){
+            steps {
+                sh 'echo Unit tests will run here'
+            }
+        }
+        stage('Sonar Scanning'){
+            steps{
+                sh 'sonar-scanner'
+            }
+        }
         stage('Build'){
             steps {
                 sh '''
