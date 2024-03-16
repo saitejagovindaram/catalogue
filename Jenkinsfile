@@ -11,7 +11,7 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         // NEXUS_URL = "172.31.20.124:8081"
-        NEXUS_URL = params.NexusURL
+        NEXUS_URL = "${params.NexusURL}"
         NEXUS_REPOSITORY = "catalogue"
         NEXUS_CREDENTIAL_ID = 'nexus-auth'
     }
