@@ -11,4 +11,3 @@ if(!env.BRANCH_NAME.equalsIgnoreCase("main")){
 }else{
 
 }
-nodejsVM()
