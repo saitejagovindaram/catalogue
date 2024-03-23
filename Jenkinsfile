@@ -1,7 +1,7 @@
 
 @Library('roboshop-shared-lib') _
 
-dev catalogueMap = [
+def catalogueMap = [
     component: "catalogue",
     application: "nodejsVM"
 ];
@@ -9,5 +9,6 @@ dev catalogueMap = [
 if(!env.BRANCH_NAME.equalsIgnoreCase('main')){
     pipelineDecision.decidePipeline(catalogueMap);
 }else{
+
 
 }
